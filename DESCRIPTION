@@ -1,0 +1,29 @@
+Package: fsql
+Title: Upgraded fql
+Version: 0.0.0.9000
+Authors@R: 
+    person(given = "Simon",
+           family = "Clinet",
+           role = c("aut", "cre"),
+           email = "clinet.simon@gmail.com")
+    person(given = "Jean-François",
+           family = "Perreton",
+           role = c("aut", "cre"),
+           email = "jean-francois.perreton@gmail.com")
+Description: A DSL for querying dataframes built on the fql package, with more features and less verbosity.
+Depends: 
+  functional (>= 0.6),
+  magrittr (>= 1.5)
+License: `use_mit_license()`, `use_gpl3_license()` or friends to
+    pick a license
+Encoding: UTF-8
+LazyData: true
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.1.1
+Suggests: 
+    testthat (>= 3.0.0),
+    knitr,
+    rmarkdown,
+    markdown
+Config/testthat/edition: 3
+VignetteBuilder: knitr
