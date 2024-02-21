@@ -58,7 +58,7 @@ recycle <- function(x, cols, env) {
 #' @return
 #'
 #' @examples
-update_aux <-  function (d, where = NULL, by = NULL, what = NULL, env = NULL)
+update_aux <- function (d, where = NULL, by = NULL, what = NULL, env = NULL)
 {
   if (is.null(env)) {env <- parent.frame()}
   if (is.null(d))
@@ -84,8 +84,7 @@ update_aux <-  function (d, where = NULL, by = NULL, what = NULL, env = NULL)
     bye <- by
     nonby <- setdiff(colnames(d), names(bye))
     bye[nonby] <- lapply(nonby, function(x) parse(text = x))
-  }
-  else {
+  } else {
     bye <- lapply(colnames(d), function(x) parse(text = x))
     names(bye) <- colnames(d)
   }

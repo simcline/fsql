@@ -4,7 +4,7 @@
 <!-- badges: start -->
 <!-- badges: end -->
 
-fsql is a less verbose, more powerful version of fql (https://github.com/HikaGenji/fql) which is a functional DSL for querying dataframes.
+The goal of fsql is to ...
 
 ## Installation
 

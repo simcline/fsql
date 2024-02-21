@@ -77,3 +77,8 @@ test_that("select inside a function works", {
   y <- 0
   expect_equal(d %>% f(1) %>% .[1, "ret4"], 1)
 })
+
+test_that("select a=-b works", {
+  d <- data.frame(x=1:3, y=c("a", "b", "c"))
+  expect_equal(d %>% select(z=-x), d %>% select(z= x-2*x))
+})

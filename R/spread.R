@@ -32,8 +32,10 @@ spread <- function(d, key, value){
       x
     })
   rep <- d_list[[1]]
-  for (k in 2:length(d_list)){
-    rep %<>% uj(d_list[[k]])
+  if (length(d_list) >= 2){
+    for (k in 2:length(d_list)){
+      rep %<>% uj(d_list[[k]])
+    }
   }
   rep
 }

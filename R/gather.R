@@ -25,12 +25,14 @@
 gather <- function(d, ..., key = "key", value = "value"){
   what_str <- as.list(substitute(...())) %>% each(unparse) %>% unlist
 
+  t <- if (what_str %.>% (\(x) !is.numeric(d[,x])) %>% any) as.character else (\(x) x)
+
   d_list <- list()
   for (x in what_str){
-    d_list[[x]] <- d[, c(setdiff(names(d),what_str),x)]
-    d_list[[x]][,value] <- d[,x]
-    d_list[[x]][,x] <- NULL
+    d_list[[x]] <- d[, c(setdiff(names(d),what_str),x), drop=F]
     d_list[[x]][,key] <- x
+    d_list[[x]][,value] <- t(d[,x])
+    d_list[[x]][,x] <- NULL
   }
 
   d_out <- NULL

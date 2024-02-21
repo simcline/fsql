@@ -44,11 +44,16 @@
 #'
 select <- function(d, ..., where = NULL, by = NULL){
 
-  what_str <- as.list(substitute(...())) %>%each(unparse) %>% unlist
+  what_str <- as.list(substitute(...())) %.>% unparse
 
   if (length(what_str) !=0){
-    keep <- what_str[what_str %>% each(function(x) !startsWith(x,"-")) %>% unlist]
-    exclude <- what_str[what_str %>% each(function(x) startsWith(x,"-")) %>% unlist] %>% each(function(x) substr(x, 2, nchar(x))) %>% unlist
+    if (is.null(names(what_str))){
+      keep <- what_str[what_str %.>% (\(x) !startsWith(x,"-"))]
+      exclude <- what_str[what_str %.>% (\(x) startsWith(x,"-"))] %.>% (\(x) substr(x, 2, nchar(x)))
+    } else {
+      keep <- what_str[ (what_str %.>% (\(x) !startsWith(x,"-"))) | (names(what_str) != "") ]
+      exclude <- what_str[(what_str %.>% (\(x) startsWith(x,"-"))) & (names(what_str) == "")] %.>% (\(x) substr(x, 2, nchar(x)))
+    }
   } else {
     keep <- NULL
     exclude <- NULL

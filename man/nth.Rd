@@ -20,4 +20,5 @@ Pick nth element
 \examples{
 x <- c(1,2,3)
 nth(x,2)
+nth(x,-1)
 }
